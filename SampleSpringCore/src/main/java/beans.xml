@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="obj" class="com.tns.ioc.Greet" scope="prototype" init-method="myInit" destroy-method="myDestroy">
+	</bean>
+
+	<!-- default scope is singleton -->
+	<bean id="objOne" class="com.tns.ioc.Greet">
+	</bean>
+
+	<bean id="empOne" class="com.tns.di.Employee">
+		<constructor-arg value="101"></constructor-arg>
+		<constructor-arg value="Amit"></constructor-arg>
+		<constructor-arg value="56101"></constructor-arg>
+		<constructor-arg>
+			<list>
+				<value>7878788800</value>
+				<value>7878788801</value>
+			</list>
+
+		</constructor-arg>
+	</bean>
+
+	<bean id="empTwo" class="com.tns.di.Employee">
+		<property name="empNo" value="102"></property>
+		<property name="Name" value="Nikhil"></property>
+		<property name="salary" value="67102"></property>
+		<property name="contactNo">
+			<list>
+				<value>6797999900</value>
+			</list>
+		</property>
+
+	</bean>
+
+	<bean id="empThree" class="com.tns.di.Employee">
+		<property name="salary" value="67000" />
+		<constructor-arg value="103"></constructor-arg>
+		<constructor-arg value="Nayan"></constructor-arg>
+		<constructor-arg value="51000"></constructor-arg>
+		<constructor-arg>
+			<list>
+				<value>7878788800</value>
+				<value>7878788801</value>
+			</list>
+
+		</constructor-arg>
+
+		<property name="contactNo">
+			<list>
+				<value>8989999900</value>
+			</list>
+		</property>
+	</bean>
+
+
+	<bean id="address" class="com.tns.di.Address">
+		<constructor-arg value="Indiranagar" />
+		<constructor-arg value="Nashik" />
+		<constructor-arg value="422009" />
+	</bean>
+
+	<bean id="addr2" class="com.tns.di.Address">
+		<property name="street" value="Odha" />
+		<property name="city" value="Nashik" />
+		<property name="pincode" value="422003" />
+	</bean>
+	<bean id="person1" class="com.tns.di.Person">
+		<property name="id" value="10"></property>
+		<property name="name" value="Anurag"></property>
+		<property name="address" ref="addr2"></property>
+	</bean>
+
+	<bean id="person2" class="com.tns.di.Person" autowire="byName">
+		<property name="id" value="20"></property>
+		<property name="name" value="Dinesh"></property>
+		<property name="address" ref="addr2"></property>
+	</bean>
+
+
+</beans>
